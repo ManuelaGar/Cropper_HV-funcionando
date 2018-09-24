@@ -22,6 +22,8 @@ class ViewController: UIViewController {
     
     var imageWasTapped = false
     var medida = 0
+    var tipoMarcador = 0
+    var tipoMarcador2 = 0
     var tap = 0
     var mmX: Float = 0
     var mmY: Float = 0
@@ -53,6 +55,8 @@ class ViewController: UIViewController {
         let vc1 = segue.destination as! CropViewController
         vc1.tap1 = self.tap
         vc1.medida = self.medida
+        vc1.tipoMarcador = self.tipoMarcador
+        vc1.tipoMarcador2 = self.tipoMarcador2
         
         if segue.identifier == "showCrop" {
             let exampleCropViewController = segue.destination as! CropViewController

@@ -105,14 +105,17 @@ class CropViewController: IGRPhotoTweakViewController {
 
     var tap1 = 0
     var medida = 0
+    var tipoMarcador = 0
+    var tipoMarcador2 = 0
     var medidaText = ""
     var mmPorPixelX: Float = 0
     var mmPorPixelY: Float = 0
     var mmX: Float = 0
     var mmY: Float = 0
+    var m: Float = 0
     
-    let marcador: Float = 24.5
-    let marcador2: Float = 23.5
+    var marcador: Float = 0
+    var marcador2: Float = 0
     var h1: Float = 0
     var h2: Float = 0
     
@@ -148,6 +151,35 @@ class CropViewController: IGRPhotoTweakViewController {
     fileprivate func setupAngleLabelValue(radians: CGFloat) {
         let intDegrees: Int = Int(IGRRadianAngle.toDegrees(radians))
         self.angleLabel?.text = "\(intDegrees)°"
+    }
+    
+    func MarcadorElegido (tipoMar: Int) -> (Float) {
+        switch tipoMar{
+        case 1:
+            m = 21.75
+        case 2:
+            m = 17
+        case 3:
+            m = 23.05
+        case 4:
+            m = 20.35
+        case 5:
+            m = 24.5
+        case 6:
+            m = 22.5
+        case 7:
+            m = 23.75
+        case 8:
+            m = 23.75
+        case 9:
+            m = 26.75
+        case 10:
+            m = 30
+        default:
+            m = 30
+        }
+        print("macador \(m)")
+        return m
     }
     
     // MARK: - Rotation
@@ -187,7 +219,10 @@ class CropViewController: IGRPhotoTweakViewController {
     
     @IBAction func cropBtn(_ sender: UIBarButtonItem) {
         cropAction()
-        
+        marcador = MarcadorElegido(tipoMar: tipoMarcador)
+        marcador2 = MarcadorElegido(tipoMar: tipoMarcador2)
+        print("marcador1: \(marcador) y tipo Marcador \(tipoMarcador)")
+        print("marcador2: \(marcador2) y tipo Marcador2 \(tipoMarcador2)")
         if self.medida == 1 {
             // Medida Horizontal
             print("Medida Horizontal")
