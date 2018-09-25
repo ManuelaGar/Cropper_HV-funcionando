@@ -282,10 +282,10 @@ class CropViewController: IGRPhotoTweakViewController {
                 
                 UserDefaults.standard.set(altura, forKey: "altura")
                 print("h2 es \(h2) y la h1-h2 es \(altura)")
-                print("Los mm x: \(mmX), y son: \(mmY)")
-                
-                UserDefaults.standard.set(mmX, forKey:"mmEnX")
-                UserDefaults.standard.set(mmY, forKey:"mmEnY")
+//                print("Los mm x: \(mmX), y son: \(mmY)")
+//
+//                UserDefaults.standard.set(mmX, forKey:"mmEnX")
+//                UserDefaults.standard.set(mmY, forKey:"mmEnY")
             }
         }
     }

@@ -16,6 +16,7 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var editItem: UIBarButtonItem!
     @IBOutlet weak var libraryItem: UIBarButtonItem!
+    @IBOutlet weak var doneItem: UIBarButtonItem!
     
     @IBOutlet weak var medidaLabel: UILabel!
     fileprivate var image: UIImage!
@@ -34,11 +35,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         pickerView.delegate = self
         pickerView.allowsEditing = false
+        print("tipomarcador3 \(tipoMarcador)")
+        print("tipomarcador4 \(tipoMarcador2)")
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        UserDefaults.standard.set(false, forKey: "Cancel")
         mmEnImagenCortada()
+        //doneItem.isEnabled = true
         if (self.image == nil) {
             openLibrary()
             self.medidaLabel?.text = ""
@@ -91,11 +96,22 @@ class ViewController: UIViewController {
         self.edit(image: self.image)
     }
     
+    @IBAction func cancelPressed(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+        UserDefaults.standard.set(true, forKey: "Cancel")
+    }
+    
+    @IBAction func donePressed(_ sender: UIBarButtonItem) {
+        navigationController?.popViewController(animated: true)
+        self.doneItem.isEnabled = false
+    }
+    
     @IBAction func imageClicked(_ sender: Any){
         print("image tapped \(imageWasTapped)")
         imageWasTapped = true
         self.tap = 1
         edit(image: image)
+        self.doneItem.isEnabled = true
     }
     
     @objc func mmEnImagenCortada(){
